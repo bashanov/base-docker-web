@@ -1,0 +1,41 @@
+# Add to /etc/hosts: 127.0.0.1 mysite.docker.local mysite-yii.docker.local mailtrap.docker.local
+
+version: '3.6'
+
+services:
+  nginx:
+    image: nginx:1.15.2-alpine
+    restart: unless-stopped
+    ports:
+      - 8888:80
+    environment:
+      - TZ=Europe/Moscow
+    links:
+      - php
+    volumes:
+      - ./runtime/docker/nginx/logs:/var/log/nginx
+      - ./docker/nginx/conf:/etc/nginx/conf.d
+      - .:/var/www
+  php:
+    build: ./docker/php/
+    restart: unless-stopped
+    volumes:
+      - .:/var/www
+      - ./runtime/docker/php/composer:/tmp/.composer/cache
+    links:
+      - mysql
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    ports:
+      - 13306:3306
+    environment:
+      - TZ=Europe/Moscow
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./runtime/docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - ./docker/mysql/conf:/etc/mysql/conf.d
+  mailtrap:
+    image: schickling/mailcatcher
+    restart: unless-stopped

@@ -1,0 +1,21 @@
+{
+  "require": {
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-bootstrap": "*",
+
+    "ext-curl": "*",
+    "ext-iconv": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "yiisoft/yii2-gii": "*",
+    "yiisoft/yii2-debug": "*"
+  },
+  "repositories": [{
+    "type": "composer",
+    "url": "https://asset-packagist.org"
+  }]
+}

@@ -1,0 +1,8 @@
+.git/
+.idea/
+vendor/
+runtime/
+mysite-yii/composer.lock
+mysite-yii/vendor
+mysite-yii/runtime
+mysite-yii/www/assets
