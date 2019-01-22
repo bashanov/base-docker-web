@@ -10,9 +10,9 @@ This base repo allows you to make jump with the docker. You may easily clone and
 ## Install
 1. Clone repo
 2. Options:  
-2.1. To run empty web site do `./init.sh`   
-2.2. To run yii2 based web site do `./init-yii.sh`   
-2.3. To down containers and clean tmp folders run `./clear.sh`
+2.1. To run empty web site do `./init.sh site`   
+2.2. To run yii2 based web site do `./init.sh site-yii`   
+2.3. To down containers and clean tmp folders run `./init.sh reset`
 
 ## Enjoy
 Don't forget to add aliases to /etc/hosts  
